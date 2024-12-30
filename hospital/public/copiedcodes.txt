@@ -1,0 +1,1078 @@
+// MongoDB connection (you can choose to use mongoose or native MongoDB driver)
+mongoose.connect("mongodb+srv://keerthikar2122:PCr8vleQx1NuWmUo@cluster0.eyxks.mongodb.net/hospitaldb", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log("Connected to MongoDB");
+}).catch((err) => {
+  console.error("Failed to connect to MongoDB", err);
+});
+
+// User schema using mongoose
+const userSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  dateOfBirth: String,
+  gender: String,
+  phoneNumber: String,
+  email: String,
+  staffId: String,
+  role: String,
+  department: String,
+  specialization: String,
+  dateOfJoining: String,
+  username: String,
+  password: String,
+  permanentAddress: String,
+  temporaryAddress: String,
+  emergencyContactName: String,
+  emergencyRelationship: String,
+  emergencyContactPhone: String,
+  profilePicture: String,
+  idProof: String,
+  bankName: String,
+  accountNumber: String,
+  ifscCode: String,
+  medicalConditions: String,
+});
+
+// User model using mongoose
+const User = mongoose.model("User", userSchema);
+
+// Set up file storage for profile and ID proof images
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    // Ensure the uploads folder exists or create it
+    const uploadDir = path.join(__dirname, "uploads");
+    if (!require("fs").existsSync(uploadDir)) {
+      require("fs").mkdirSync(uploadDir);
+    }
+    cb(null, uploadDir); // Set the upload directory
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Set unique file names
+  },
+});
+
+const upload = multer({ storage: storage });
+
+// Register API
+app.post("/api/register", upload.fields([{ name: "profilePicture" }, { name: "idProof" }]), async (req, res) => {
+  try {
+    const {
+      firstName,
+      lastName,
+      dateOfBirth,
+      gender,
+      phoneNumber,
+      email,
+      staffId,
+      role,
+      department,
+      specialization,
+      dateOfJoining,
+      username,
+      password,
+      permanentAddress,
+      temporaryAddress,
+      emergencyContactName,
+      emergencyRelationship,
+      emergencyContactPhone,
+      medicalConditions,
+    } = req.body;
+
+    // Extract file paths for profilePicture and idProof
+    const profilePicture = req.files["profilePicture"] ? req.files["profilePicture"][0].path : "";
+    const idProof = req.files["idProof"] ? req.files["idProof"][0].path : "";
+
+    // Create new user document
+    const newUser = new User({
+      firstName,
+      lastName,
+      dateOfBirth,
+      gender,
+      phoneNumber,
+      email,
+      staffId,
+      role,
+      department,
+      specialization,
+      dateOfJoining,
+      username,
+      password,
+      permanentAddress,
+      temporaryAddress,
+      emergencyContactName,
+      emergencyRelationship,
+      emergencyContactPhone,
+      profilePicture,
+      idProof,
+      bankName: req.body.bankName,
+      accountNumber: req.body.accountNumber,
+      ifscCode: req.body.ifscCode,
+      medicalConditions,
+    });
+
+    // Save user to database
+    await newUser.save();
+
+    res.status(201).json({ message: "Registration successful!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Registration failed. Please try again later." });
+  }
+});
+
+
+
+
+								the original register file.
+
+
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
+import { Link } from 'react-router-dom'; // Add this import
+import Header from './Header';
+import Footer from './Footer';
+import axios from 'axios'; // Import axios for API requests
+import NotificationCard from './NotificationCard';
+
+function Register() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    gender: "",
+    phoneNumber: "",
+    email: "",
+    staffId: "",
+    role: "",
+    department: "",
+    specialization: "",
+    dateOfJoining: "",
+    username: "",
+    password: "",
+    permanentAddress: "",
+    temporaryAddress: "",
+    emergencyContactName: "",
+    emergencyRelationship: "",
+    emergencyContactPhone: "",
+    profilePicture: null,
+    idProof: null,
+    bankName: "",
+    accountNumber: "",
+    ifscCode: "",
+    medicalConditions: "",
+  });
+const [notification, setNotification] = useState({
+    message: "",
+    type: "", // 'success' or 'error'
+  });
+  const [passwordVisible, setPasswordVisible] = useState(false); // For password visibility toggle
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
+  const [showNotification, setShowNotification] = useState(false);
+  const [username, setUsername] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    if (type === "file") {
+      setFormData({
+        ...formData,
+        [name]: files[0],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+
+  const handlePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible); // Toggle password visibility
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+      try {
+      const response = await axios.post("http://localhost:8080/api/register", formData);
+
+      if (response.status === 201) {
+       setUsername(formData.username);
+        setShowNotification(true); // Show notification card
+        setSuccessMessage("Registration successful! Redirecting to login...");
+        setTimeout(() => {
+          setShowNotification(false); // Hide after 3 seconds
+          navigate("/login");
+        }, 3000); // Redirect after 3 seconds
+      } else {
+        setErrorMessage("An unexpected error occurred. Please try again.");
+      }
+        setNotification({ message: "Registration successful! Redirecting...", type: "success" });
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
+      }
+    } catch (error) {
+ if (error.response && error.response.data) {
+        setErrorMessage(error.response.data.message || "Registration failed.");
+      } else {
+        setErrorMessage("Unable to connect to the server. Please try again later.");
+      }
+      const errorMessage = error.response?.data?.error || "An unexpected error occurred.";
+      setNotification({ message: errorMessage, type: "error" });
+    }
+  };
+
+  return (
+    <div>
+      <Header />
+      {showNotification && (
+        <NotificationCard
+          message="You have been registered successfully!"
+          username={username}
+          onClose={() => setShowNotification(false)}
+        />
+      )}
+      <div style={{ backgroundColor: "#fff", minHeight: "100vh", padding: "50px 0" }}>
+        <div className="container" style={{ maxWidth: "900px", margin: "0 auto", backgroundColor: "#edf5ec", padding: "30px", borderRadius: "8px" }}>
+          <h1
+            style={{
+              textAlign: "center",
+              color: "#0F6A6B",
+              marginBottom: "30px",
+            }}
+          >
+            User Registration
+          </h1>
+          {errorMessage && (
+            <div style={{ color: "red", textAlign: "center", marginBottom: "20px" }}>
+              {errorMessage}
+            </div>
+          )}
+          {successMessage && (
+            <div style={{ color: "green", textAlign: "center", marginBottom: "20px" }}>
+              {successMessage}
+            </div>
+          )}
+          <form onSubmit={handleSubmit}>
+            {/* Personal Information */}
+            <div className="form-section">
+              <h2 style={{ color: "#0F6A6B", marginBottom: "15px" }}>
+                1. Personal Information
+              </h2>
+              <div className="form-group">
+                <label htmlFor="first_name">First Name</label>
+                <input type="text" id="first_name" name="firstName" value={formData.firstName}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="last_name">Last Name</label>
+                <input type="text" id="last_name" name="lastName" value={formData.lastName}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="date_of_birth">Date of Birth</label>
+                <input type="date" id="date_of_birth" name="dateOfBirth"  value={formData.dateOfBirth}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="gender">Gender</label>
+                <select id="gender" name="gender" value={formData.gender}
+                  onChange={handleChange}
+                  required>
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="phone_number">Phone Number</label>
+                <input type="text" id="phone_number" name="phoneNumber" value={formData.phoneNumber}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" name="email" value={formData.email}
+                  onChange={handleChange}
+                  required />
+              </div>
+            </div>
+
+            {/* Professional Information */}
+            <div className="form-section">
+              <h2 style={{ color: "#0F6A6B", marginBottom: "15px" }}>2. Professional Information</h2>
+              <div className="form-group">
+                <label htmlFor="staff_id">Staff ID</label>
+                <input type="text" id="staff_id" name="staffId" value={formData.staffId}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="role">Designation</label>
+                <input type="text" id="role" name="role" value={formData.role}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="department">Department</label>
+                <input type="text" id="department" name="department" value={formData.department}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="specialization">Role</label>
+                <select id="access" name="roleOfAccesss" value={formData.roleOfAccess}
+                  onChange={handleChange}
+                  required>
+                  <option value="">Select Role of Access</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Management">Management</option>
+                  <option value="Staff">Staff</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="date_of_joining">Date of Joining</label>
+                <input type="date" id="date_of_joining" name="dateOfJoining" value={formData.dateOfJoining}
+                  onChange={handleChange}
+                  required />
+              </div>
+            </div>
+
+            {/* Credentials */}
+            <div className="form-section">
+              <h2 style={{ color: "#0F6A6B", marginBottom: "15px" }}>3. Credentials</h2>
+              <div className="form-group">
+                <label htmlFor="username">Username</label>
+                <input type="text" id="username" name="username" value={formData.username}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <div style={{ position: "relative" }}>
+                  <input
+                    type={passwordVisible ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                  onChange={handleChange}
+                  required
+                  />
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      right: "10px",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                    }}
+                    onClick={handlePasswordVisibility}
+                  >
+                    {passwordVisible ? <FaEye /> : <FaEyeSlash />}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Address Details */}
+            <div className="form-section">
+              <h2 style={{ color: "#0F6A6B", marginBottom: "15px" }}>4. Address Details</h2>
+              <div className="form-group">
+                <label htmlFor="permanent_address">Permanent Address</label>
+                <textarea id="permanent_address" name="permanentAddress" rows="3" value={formData.permanentAddress}
+                  onChange={handleChange}
+                  required></textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="temporary_address">Temporary Address</label>
+                <textarea id="temporary_address" name="temporaryAddress" rows="3"value={formData.temporaryAddress}
+                  onChange={handleChange}
+                  required></textarea>
+              </div>
+            </div>
+
+            {/* Emergency Contact */}
+            <div className="form-section">
+              <h2 style={{ color: "#0F6A6B", marginBottom: "15px" }}>5. Emergency Contact</h2>
+              <div className="form-group">
+                <label htmlFor="emergency_contact_name">Emergency Contact Name</label>
+                <input type="text" id="emergency_contact_name" name="emergencyContactName" value={formData.emergencyContactNumber}
+                  onChange={handleChange}
+                  required/>
+              </div>
+              <div className="form-group">
+                <label htmlFor="emergency_relationship">Relationship</label>
+                <input type="text" id="emergency_relationship" name="emergencyRelationship"  value={formData.emergencyRelationship}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="emergency_contact_phone">Emergency Contact Phone</label>
+                <input type="text" id="emergency_contact_phone" name="emergencyContactPhone" value={formData.emergencyContactPhone}
+                  onChange={handleChange}
+                  required />
+              </div>
+            </div>
+
+            {/* Additional Information */}
+            <div className="form-section">
+              <h2 style={{ color: "#0F6A6B", marginBottom: "15px" }}>6. Additional Information</h2>
+              <div className="form-group">
+                <label htmlFor="profile_picture">Profile Picture</label>
+                <input type="file" id="profile_picture" name="profilePicture" value={formData.profilePicture}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="id_proof">Identification Proof</label>
+                <input type="file" id="id_proof" name="idProof" value={formData.idProof}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="bank_name">Bank Name</label>
+                <input type="text" id="bank_name" name="bankName" value={formData.bankName}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="account_number">Account Number</label>
+                <input type="text" id="account_number" name="accountNumber" value={formData.accountNumber}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="ifsc_code">IFSC Code</label>
+                <input type="text" id="ifsc_code" name="ifscCode" value={formData.firstName}
+                  onChange={handleChange}
+                  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="medical_conditions">Medical Details</label>
+                <textarea id="medical_conditions" name="medicalConditions" rows="3" value={formData.medicalConditions}
+                  onChange={handleChange}
+                  required></textarea>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="form-group">
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: "#0F6A6B",
+                  color: "primary",
+                  padding: "10px 20px",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  fontSize: "16px",
+                  transition: "background-color 0.3s ease",
+                }}
+                onMouseOver={(e) => (e.target.style.backgroundColor = "#054D4F")}
+                onMouseOut={(e) => (e.target.style.backgroundColor = "#0F6A6B")}
+              >
+                Register
+              </button>
+            </div>
+          </form>
+
+          <p style={{ textAlign: "center" }}>
+            Already have an account?{" "}
+            <Link to="/login" style={{ color: "#0F6A6B" }}>Sign in</Link> {/* Link updated to redirect to /login */}
+          </p>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+export default Register;
+
+
+
+						server.js
+
+const express = require("express");
+const mongoose = require("mongoose");
+const multer = require("multer");
+const cors = require("cors");
+const path = require("path");
+const { MongoClient } = require("mongodb");  // Updated import
+const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
+// npm install bcrypt
+
+
+
+
+// Initialize express app
+const app = express();
+const port = 8080;
+
+// Middleware
+app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
+
+
+const url = "mongodb+srv://keerthikar2122:PCr8vleQx1NuWmUo@cluster0.eyxks.mongodb.net/";
+const client = new MongoClient(url);
+// Database Name
+const dbName = 'hospitaldb';
+
+// POST API for Registration
+app.post("/api/register", async (req, res) => {
+  try {
+    const { firstName, lastName, dateOfBirth, email, password, staffId, username } = req.body;
+    
+    // Ensure staffId and username are provided and valid
+    if (!staffId || staffId === null || staffId === undefined) {
+      return res.status(400).json({ error: "Staff ID is required" });
+    }
+    
+    if (!username || username === null || username === undefined) {
+      return res.status(400).json({ error: "Username is required" });
+    }
+
+    await client.connect();
+    const db = client.db(dbName);
+
+    // Validation
+    if (!firstName || !lastName || !dateOfBirth || !email || !password) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    // Check if the user already exists
+    const existingUser = await db.collection("userdetails").findOne({ email });
+    if (existingUser) {
+      return res.status(409).json({ error: "Email already exists" });
+    }
+
+    // Check if the staffId already exists (if staffId should be unique)
+    const existingStaffId = await db.collection("userdetails").findOne({ staffId });
+    if (existingStaffId) {
+      return res.status(409).json({ error: "Staff ID already exists" });
+    }
+
+    // Check if the username already exists (if username should be unique)
+    const existingUsername = await db.collection("userdetails").findOne({ username });
+    if (existingUsername) {
+      return res.status(409).json({ error: "Username already exists" });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Insert the user into the database
+    const newUser = {
+      firstName,
+      lastName,
+      dateOfBirth: new Date(dateOfBirth),
+      email,
+      password: hashedPassword,
+      staffId, 
+      username, // Ensure this field is provided
+    };
+
+    await db.collection("userdetails").insertOne(newUser);
+
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    console.error("Error during registration:", error);
+    res.status(500).json({ error: "An unexpected error occurred" });
+  }
+});
+
+
+app.post('/upload', function(req, res) {
+  let file = req.files.img;
+  
+  let uploadPath = __dirname + '/uploads/' + file.name;
+  file.mv(uploadPath, function(err) {
+    if (err)
+      return res.status(500).send(err);
+    res.send("File uploaded!!");
+  });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+						Register.js
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
+import { Link } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
+import axios from 'axios'; // Import axios for API requests
+import NotificationCard from './NotificationCard';
+
+function Register() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    email: "",
+    password: "",
+    staffId: "",  // Adding staffId field here
+    username: ""   // Adding username field here
+  });
+
+  const [notification, setNotification] = useState({
+    message: "",
+    type: "", // 'success' or 'error'
+  });
+
+  const [passwordVisible, setPasswordVisible] = useState(false); // For password visibility toggle
+  const [showNotification, setShowNotification] = useState(false);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handlePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible); // Toggle password visibility
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:8080/api/register", formData);
+
+      if (response.status === 201) {
+        setNotification({ message: "Registration successful! Redirecting...", type: "success" });
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
+      }
+    } catch (error) {
+      const errorMessage = error.response?.data?.error || "An unexpected error occurred.";
+      setNotification({ message: errorMessage, type: "error" });
+    }
+  };
+
+  return (
+    <div>
+      <Header />
+      {showNotification && (
+        <NotificationCard
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setShowNotification(false)}
+        />
+      )}
+
+      <div style={{ backgroundColor: "#fff", minHeight: "100vh", padding: "50px 0" }}>
+        <div className="container" style={{ maxWidth: "900px", margin: "0 auto", backgroundColor: "#edf5ec", padding: "30px", borderRadius: "8px" }}>
+          <h1
+            style={{
+              textAlign: "center",
+              color: "#0F6A6B",
+              marginBottom: "30px",
+            }}
+          >
+            User Registration
+          </h1>
+
+          {notification.message && (
+            <div
+              style={{
+                color: notification.type === "success" ? "green" : "red",
+                textAlign: "center",
+                marginBottom: "20px",
+              }}
+            >
+              {notification.message}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit}>
+            {/* Personal Information */}
+            <div className="form-section">
+              <h2 style={{ color: "#0F6A6B", marginBottom: "15px" }}>
+                1. Personal Information
+              </h2>
+              <div className="form-group">
+                <label htmlFor="first_name">First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="last_name">Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="date_of_birth">Date of Birth</label>
+                <input
+                  type="date"
+                  name="dateOfBirth"
+                  value={formData.dateOfBirth}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <div style={{ position: "relative" }}>
+                  <input
+                    type={passwordVisible ? "text" : "password"}
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                  <span
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                    }}
+                    onClick={handlePasswordVisibility}
+                  >
+                    {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
+              </div>
+
+              {/* Staff ID */}
+              <div className="form-group">
+                <label htmlFor="staffId">Staff ID</label>
+                <input
+                  type="text"
+                  name="staffId"
+                  value={formData.staffId}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {/* Username */}
+              <div className="form-group">
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="form-group">
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: "#0F6A6B",
+                  color: "white",
+                  padding: "10px 20px",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  fontSize: "16px",
+                  transition: "background-color 0.3s ease",
+                }}
+                onMouseOver={(e) => (e.target.style.backgroundColor = "#054D4F")}
+                onMouseOut={(e) => (e.target.style.backgroundColor = "#0F6A6B")}
+              >
+                Register
+              </button>
+            </div>
+          </form>
+
+          <p style={{ textAlign: "center" }}>
+            Already have an account? {" "}
+            <Link to="/login" style={{ color: "#0F6A6B" }}>Sign in</Link>
+          </p>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+export default Register;
+
+
+
+
+ san rewritten server.js
+
+
+
+const express = require("express");
+const { MongoClient } = require("mongodb");
+const bodyParser = require("body-parser");
+
+const app = express();
+const port = 8080;
+//MongoDB Configuration
+const mongoUri ="mongodb+srv://keerthikar2122:PCr8vleQx1NuWmUo@cluster0.eyxks.mongodb.net/";
+const client = new MongoClient(mongoUri);
+const dbName = 'hospitaldb';
+//const url = "mongodb+srv://keerthikar2122:PCr8vleQx1NuWmUo@cluster0.eyxks.mongodb.net/";
+//const client = new MongoClient(url);
+// Database Name
+//const dbName = 'hospitaldb';
+
+// Middleware
+app.use(bodyParser.json());
+
+/*Connect to MongoDB
+async function connectToDatabase() {
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.error("Failed to connect to MongoDB", err);
+  }
+}
+connectToDatabase();*/
+// Function to connect to MongoDB
+async function connectToDatabase() {
+  try {
+      await client.connect(); // Connect the client
+      console.log('Connected to MongoDB');
+  } catch (error) {
+      console.error('Failed to connect to MongoDB:', error);
+      process.exit(1); // Exit if connection fails
+  }
+}
+// Connect to the database when the server starts
+connectToDatabase();
+
+// API endpoint to add a new user
+app.post("/api/register", async (req, res) => {
+  try {
+    const userDetails = req.body; // Expecting data to come in the request body
+
+    // Validate required fields
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "dateOfBirth",
+      "gender",
+      "phoneNumber",
+      "email",
+      "staffId",
+      "role",
+      "department",
+      "roleOfAccess",
+      "dateOfJoining",
+      "username",
+      "password",
+      "permanentAddress",
+      "temporaryAddress",
+      "emergencyContactName",
+      "emergencyRelationship",
+      "emergencyContactPhone",
+      "bankName",
+      "accountNumber",
+      "ifscCode",
+      "medicalConditions",
+    ];
+
+    for (const field of requiredFields) {
+      if (!userDetails[field]) {
+        return res.status(400).json({ error: `Missing required field: ${field}` });
+      }
+    }
+    const dbName = "hospitaldb";
+    const db = client.db(dbName);
+    const collection = db.collection("userdetails");
+
+    // Insert user details into the collection
+    const result = await collection.insertOne(userDetails);
+
+    res.status(201).json({ message: "User added successfully", userId: result.insertedId });
+  } catch (error) {
+    console.error("Error adding user:", error);
+    res.status(500).json({ error: "Failed to add user" });
+  }
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+
+santhose new dummy.js
+const express = require("express");
+const { MongoClient } = require("mongodb");
+const bodyParser = require("body-parser");
+
+const app = express();
+const port = 8080;
+//MongoDB Configuration
+
+const mongoUri ="mongodb+srv://keerthi2002:keer1234rk@cluster0.eyxks.mongodb.net/";
+const client = new MongoClient(mongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+});
+// const dbName = 'hospitaldb';
+//const url = "mongodb+srv://keerthikar2122:PCr8vleQx1NuWmUo@cluster0.eyxks.mongodb.net/";
+//const client = new MongoClient(url);
+// Database Name
+//const dbName = 'hospitaldb';
+
+// Middleware
+app.use(bodyParser.json());
+
+/*Connect to MongoDB
+async function connectToDatabase() {
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.error("Failed to connect to MongoDB", err);
+  }
+}
+connectToDatabase();
+// Function to connect to MongoDB
+async function connectToDatabase() {
+  try {
+      await client.connect(); // Connect the client
+      console.log('Connected to MongoDB');
+  } catch (error) {
+      console.error('Failed to connect to MongoDB:', error);
+      process.exit(1); // Exit if connection fails
+  }
+}
+// Connect to the database when the server starts
+connectToDatabase();*/
+
+// Connect to MongoDB
+async function connectToDatabase() {
+  try {
+    console.log("Attempting to connect to MongoDB...");
+    await client.connect();
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Failed to connect to MongoDB:", error);
+    process.exit(1); // Exit process if connection fails
+  }
+}
+
+connectToDatabase();
+// API endpoint to add a new user
+app.post("/api/register", async (req, res) => {
+    try {
+      const userDetails = req.body; // Expecting data to come in the request body
+  
+      // Validate required fields
+      const requiredFields = [
+        "firstName",
+        "lastName",
+        "dateOfBirth",
+        "gender",
+        "phoneNumber",
+        "email",
+        "staffId",
+        "designation",
+        "department",
+        "roleOfAccess",
+        "dateOfJoining",
+        "username",
+        "password",
+        "permanentAddress",
+        "temporaryAddress",
+        "emergencyContactName",
+        "emergencyRelationship",
+        "emergencyContactPhone",
+        "bankName",
+        "accountNumber",
+        "ifscCode",
+        "medicalConditions",
+      ];
+  
+      for (const field of requiredFields) {
+        if (!userDetails[field]) {
+          return res.status(400).json({ error: `Missing required field: ${field}` });
+        }
+      }
+  
+      const dbName = "hospitaldb";
+      const db = client.db(dbName);
+      const collection = db.collection("userdetails");
+  
+      // Check if the username already exists
+      const existingUser = await collection.findOne({ username: userDetails.username });
+      if (existingUser) {
+        return res.status(400).json({ error: `Username '${userDetails.username}' already exists.` });
+      }
+  
+      // Insert user details into the collection
+      const result = await collection.insertOne(userDetails);
+  
+      res.status(201).json({ message: "User added successfully", userId: result.insertedId });
+    } catch (error) {
+      console.error("Error adding user:", error);
+      res.status(500).json({ error: "Failed to add user" });
+    }
+  });
+  
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+

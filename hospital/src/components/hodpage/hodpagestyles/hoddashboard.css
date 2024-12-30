@@ -1,0 +1,98 @@
+.dashboardContainer_hoddash {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebarWrapper_hoddash {
+    flex-shrink: 0;
+}
+
+.mainContent_hoddash {
+    margin-left: 300px;
+    flex: 1;
+    overflow-y: scroll;
+    padding: 20px;
+    color: #0F6A6B;
+}
+
+.section_hoddash {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    color: black;
+}
+
+.cardChartContainer_hoddash {
+    flex: 1 1 25%;
+    background-color: rgba(176, 220, 220, 0.62);
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.chartsSection_hoddash {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 4em; /* Add 2-line space (approx.) between rows */
+    column-gap: 20px; /* Maintain existing gap between columns */
+    margin-top: 40px;
+    width: 100%;
+}
+
+.chartContainer_hoddash {
+    min-width: 300px;
+    flex: 1 1 48%;
+    background: #ffffff;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    
+}
+
+.chartContainer_hoddash canvas {
+    max-width: 100%;
+    max-height: 150%;
+}
+
+.notificationsSection_hoddash {
+    padding-bottom: 100px;
+}
+
+.notifications_hoddash {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.notificationItem_hoddash {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    background: linear-gradient(45deg, #f9f9f9 50%, #e0e0e0 50%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dot_hoddash {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #8B0000;
+    margin-right: 10px;
+}

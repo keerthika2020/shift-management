@@ -1,0 +1,117 @@
+.container_hodattendancetrends {
+    display: flex;
+    background-color: #f4f6f9;
+    font-family: Arial, sans-serif;
+  }
+  
+  .content_hodattendancetrends {
+    margin-left: 300px;
+    padding: 20px;
+    width: 70%;
+    
+  }
+  
+  .header_hodattendancetrends {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+  
+  .card-container_hodattendancetrends {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  
+  .card_hodattendancetrends {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .card-header_hodattendancetrends {
+    font-size: 24px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .card-value_hodattendancetrends {
+    text-align: center;
+    white-space: pre;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: monospace;
+    color: #2c3e50;
+    margin: 10px 0;
+  }
+  
+  .card-subtext_hodattendancetrends {
+    font-size: 12px;
+    color: #7f8c8d;
+  }
+  
+  .down_hodattendancetrends {
+    color: #e74c3c;
+  }
+  
+  .up_hodattendancetrends {
+    color: #27ae60;
+  }
+  
+  .table_hodattendancetrends {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table_hodattendancetrends th {
+    padding: 12px;
+    background-color: #0f6a6b;
+    color: white;
+    text-align: center;
+  }
+  
+  .table_hodattendancetrends td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .alert_hodattendancetrends {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .chart-container_hodattendancetrends {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+    width: 100%; /* Ensure full width */
+    max-width: 1200px; /* Optional: Add a max width */
+}
+
+.chart_hodattendancetrends {
+    width: 95%;
+    height: 250px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    position: relative;
+    z-index: 1; /* Ensure it's above the sidebar if there's overlap */
+}

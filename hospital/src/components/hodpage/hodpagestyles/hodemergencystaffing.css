@@ -1,0 +1,118 @@
+.container_hodemergencystaffing {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebarWrapper_hodemergencystaffing {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .mainContent_hodemergencystaffing {
+    margin-left: 300px;
+    flex: 1;
+    padding: 20px;
+    color: #0F6A6B;
+    width: 95%;
+  }
+  
+  .heading_hodemergencystaffing {
+    font-size: 2rem;
+  }
+  
+  .actionsSection_hodemergencystaffing {
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .subheading_hodemergencystaffing {
+    color: #0F6A6B;
+    margin-bottom: 10px;
+  }
+  
+  .description_hodemergencystaffing {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .buttonGroup_hodemergencystaffing {
+    display: flex;
+    gap: 10px;
+    width: 90%;
+  }
+  
+  .notifyButton_hodemergencystaffing {
+    padding: 10px 20px;
+    width: 300px;
+    height: 90px;
+    background-color: #216674;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .staffSection_hodemergencystaffing {
+    margin-bottom: 20px;
+    color: black;
+    width: 95%;
+  }
+  
+  .staffTable_hodemergencystaffing {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #0F6A6B;
+  }
+  
+  .staffTable_hodemergencystaffing th {
+    text-align: left;
+    padding: 8px;
+    color: white;
+  }
+  
+  .staffTable_hodemergencystaffing td {
+    padding: 8px;
+  }
+  
+  .evenRow_hodemergencystaffing {
+    background-color: #f2f2f2;
+  }
+  
+  .oddRow_hodemergencystaffing {
+    background-color: #ffffff;
+  }
+  
+  .approveButton_hodemergencystaffing {
+    background-color: #227630;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .logSection_hodemergencystaffing {
+    padding-bottom: 100px;
+    color: black;
+    width: 95%;
+  }
+  
+  .logTable_hodemergencystaffing {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #0F6A6B;
+  }
+  
+  .logTable_hodemergencystaffing th {
+    text-align: left;
+    padding: 8px;
+    color: white;
+  }
+  
+  .logTable_hodemergencystaffing td {
+    padding: 8px;
+  }
+  

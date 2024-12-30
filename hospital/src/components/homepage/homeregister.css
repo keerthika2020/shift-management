@@ -1,0 +1,123 @@
+/* General Styles */
+.container_homeregister {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+ /* Form Container */
+.form-container_homeregister {
+    background-color: #edf5ec;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 20px auto; /* Center the form container */
+    width: 50%; /* You can adjust this width if you want it to be smaller or larger */
+    display: flex;
+    flex-direction: column;
+    align-items: left; 
+    justify-content: center; /* Center content vertically */
+  }
+  
+  .title_homeregister {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Section Styles */
+  .form-section_homeregister {
+    margin-bottom: 2rem;
+  }
+  
+  .section-title_homeregister {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+  
+  /* Form Group Styles */
+  .form-group_homeregister {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group_homeregister label {
+    display: block;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group_homeregister input,
+  .form-group_homeregister select,
+  .form-group_homeregister textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .form-group_homeregister input[type="file"] {
+    padding: 0;
+  }
+  
+  /* Password Input */
+  .password-input_homeregister {
+    position: relative;
+  }
+  
+  .password-toggle_homeregister {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+ /* Submit Button */
+.submit-button_homeregister {
+    width: 90px;
+    padding: 10px;
+    background-color: #0F6A6B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block; /* Make button a block element to center it */
+    margin: 0 auto; /* Center the button horizontally */
+  }
+  
+  .submit-button_homeregister:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error Message */
+  .error-message_homeregister {
+    color: red;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Notification Card */
+  .notification-card_homeregister {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    background-color: #ffcc00;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .notification-card_homeregister.error {
+    background-color: #f44336;
+  }
+  
+  .notification-card_homeregister.success {
+    background-color: #4caf50;
+  }
+  

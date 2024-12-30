@@ -1,0 +1,285 @@
+/* General Container for the Home Page */
+.home-container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Header Styling */
+header {
+  margin-bottom: 20px;
+}
+
+/* Slideshow Section */
+.slideshow {
+  position: relative;
+  text-align: center;
+  margin: 20px auto;
+  height: 400px;
+  width: 100%; /* Make the slideshow take the entire width */
+}
+
+.slideshow-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the entire width */
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slide-text {
+  position: absolute;
+  bottom: 20px;
+  left: 10%;
+  background-color: rgba(255, 255, 255, 0.8); /* Light background for better contrast */
+  color: black; /* Black text color */
+  transform: translateY(-50%);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: left;
+  max-width: 50%;
+  font-family: Arial, sans-serif; /* Optional font change */
+}
+
+/* Slider Navigation Arrows */
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow-left {
+  left: 10px;
+}
+
+.arrow-right {
+  right: 10px;
+}
+
+/* Specializations Section */
+.specializations {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.specializations img {
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adding box-shadow transition */
+}
+
+/* Hover Effect for Specialization Icons */
+.specialization-icon:hover img {
+  transform: scale(1.2); /* Pop-up effect on hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #1976d2; /* Blue border */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.specializations-container {
+  margin-top: 40px;
+}
+
+.specializations button {
+  margin: 10px;
+  transition: transform 0.3s ease; /* Add transition to button hover */
+}
+
+/* Locations Section */
+.locations {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.locations button {
+  margin: 10px;
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.6s ease;
+}
+
+/* Hover Effect for Location Buttons */
+.locations button:hover {
+  transform: scale(1.2); /* Pop-up effect */
+  border: 2px solid #1976d2; /* Blue border */
+  background-color: #1976d2; /* Highlight background */
+  color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+/* Buttons Styling */
+button {
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.6s ease;
+}
+
+button:hover {
+  background-color: #1976d2;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .slideshow-image {
+    height: 250px;
+  }
+
+  .slide-text {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .specializations button,
+  .locations button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Hover Effect for Slide Text on Small Screens */
+  .slide-text:hover {
+    background-color: rgba(255, 255, 255, 1); /* Solid white on hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+  }
+  
+  /* Specialization Icon Hover Effect on Small Screens */
+  .specialization-icon:hover img {
+    transform: scale(1.1); /* Slightly reduce scaling effect on small screens */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Ensure box-shadow persists */
+  }
+  
+  /* Improved Button Hover on Small Screens */
+  .locations button:hover,
+  .specializations button:hover {
+    transform: scale(1.1); /* Slightly reduce scaling for buttons */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+/*registration style*/
+.auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  text-align: center;
+}
+
+
+/* Style for the main container */
+.vision-mission-values {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* Title Styling */
+.section-title {
+  font-size: 36px;
+  color: #0F6A6B; /* Custom color */
+  font-weight: 600;
+  margin-bottom: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Content Container Styling */
+.content-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Content Item Styling */
+.content-item {
+  max-width: 300px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styling */
+.content-image img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Heading Styling */
+.content-heading {
+  font-size: 22px;
+  color: #0F6A6B;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 15px;
+}
+
+/* Text Styling */
+.content-text {
+  font-size: 16px;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+

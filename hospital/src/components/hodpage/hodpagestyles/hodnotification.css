@@ -1,0 +1,234 @@
+/* hodnotification.css */
+
+.container_hodnotification {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .sidebar_hodnotification {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .mainContent_hodnotification {
+    margin-left: 300px;
+    padding: 20px;
+    width: 100%;
+    background-color: #f9f9f9;
+  }
+  
+  .header_hodnotification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .headerTitle_hodnotification {
+    color: orange;
+    margin: 0;
+  }
+  
+  .markAllRead_hodnotification {
+    color: orange;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    width: 200px;
+  }
+  
+  .notificationsList_hodnotification {
+    margin-top: 30px;
+  }
+  
+  .notificationItem_hodnotification {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .notificationHeader_hodnotification {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .unreadDot_hodnotification {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .unread_hodnotification {
+    background-color: red;
+  }
+  
+  .read_hodnotification {
+    background-color: transparent;
+  }
+  
+  .notificationDetails_hodnotification {
+    flex: 1;
+  }
+  
+  .notificationDetailsHeader_hodnotification {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .profileImg_hodnotification {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  
+  .notificationSubject_hodnotification {
+    margin: 0;
+    color: black;
+  }
+  
+  .notificationTime_hodnotification {
+    color: #999;
+  }
+  
+  .expandedMessage_hodnotification {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sendMessage_hodnotification {
+    cursor: pointer;
+  }
+  
+  .replySection_hodnotification {
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .replyTitle_hodnotification {
+    color: #0f6a6b;
+  }
+  
+  .emailInputSection_hodnotification {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .profileImgSmall_hodnotification {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 10px;
+  }
+  
+  .emailInput_hodnotification {
+    flex: 1;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .toSection_hodnotification {
+    margin-top: 10px;
+  }
+  
+  .messageInput_hodnotification {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .attachmentsSection_hodnotification {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    background-color: #ebf4f8;
+    border-radius: 30px;
+    padding: 10px 20px;
+  }
+  
+  .attachmentsIcons_hodnotification {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .attachmentIcon_hodnotification,
+  .linkIcon_hodnotification,
+  .deleteIcon_hodnotification {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #0f6a6b;
+    cursor: pointer;
+  }
+  
+  .deleteIcon_hodnotification {
+    color: red;
+  }
+  
+  .sendButton_hodnotification {
+    background-color: #0f6a6b;
+    color: white;
+    cursor: pointer;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .attachedFile_hodnotification {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .linkForm_hodnotification {
+    margin-top: 10px;
+  }
+  
+  .linkTextInput_hodnotification,
+  .linkUrlInput_hodnotification {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .linkTextInput_hodnotification {
+    width: 25%;
+  }
+  
+  .linkUrlInput_hodnotification {
+    width: 45%;
+    margin-left: 10px;
+  }
+  
+  .applyLinkButton_hodnotification {
+    background-color: #9cb3c9;
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+  

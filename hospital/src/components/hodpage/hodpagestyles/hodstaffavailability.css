@@ -1,0 +1,266 @@
+/* General Styles */
+.container_hodstaffavailability {
+  display: flex;
+}
+
+.main-content_hodstaffavailability {
+  margin-left: 300px;
+  padding: 20px;
+}
+
+.section-title_hodstaffavailability {
+  color: #0F6A6B;
+}
+
+.filters_hodstaffavailability {
+  margin-left: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.filters-form_hodstaffavailability {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.filter_hodstaffavailability {
+  margin-bottom: 15px;
+}
+
+.label_hodstaffavailability {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.select_hodstaffavailability {
+  width: 120px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Apply Filters Button */
+.apply-filters-btn_hodstaffavailability {
+  background-color: #a0a9a0;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+  width: 100%;  /* Ensure both buttons have the same width */
+  height: 40px; /* Set a fixed height */
+}
+
+.apply-filters-btn_hodstaffavailability:hover {
+  background-color: #45a049;
+}
+
+/* Reset Filters Button */
+.reset-filters-btn_hodstaffavailability {
+  margin-left: 10px;
+  background-color: #a0a9a0;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+  width: 100%;  /* Ensure both buttons have the same width */
+  height: 40px; /* Set the same fixed height as the Apply button */
+}
+
+.reset-filters-btn_hodstaffavailability:hover {
+  background-color: #d73833;
+}
+
+.leave-requests_hodstaffavailability, .staff-availability_hodstaffavailability {
+  margin-top: 30px;
+}
+
+.table-container_hodstaffavailability {
+  overflow-x: auto;
+  margin-top: 20px;
+  width: 110%;
+}
+
+
+.staff-table_hodstaffavailability {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.staff-table_hodstaffavailability th, .staff-table_hodstaffavailability td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.staff-table_hodstaffavailability th {
+  background-color: #0F6A6B;
+  color: white;   
+}
+
+.even-row_hodstaffavailability {
+  background-color: #f9f9f9;
+}
+
+.odd-row_hodstaffavailability {
+  background-color: #ffffff;
+}
+
+.schedule-shift-btn_hodstaffavailability {
+  background-color: #0F6A6B;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.schedule-shift-btn_hodstaffavailability:hover {
+  background-color: #0571dc;
+}
+
+.scheduled-hodstaffavailability {
+  color: green;
+}
+/* Style for the shift details */
+.shift-details_hodstaffavailability {
+  margin-bottom: 10px;  /* Optional: adds space between shift details */
+}
+
+/* Style for day names (Monday to Friday) */
+.shift-details_hodstaffavailability span:first-child {
+  color: black;  /* Day name (e.g., Monday) in black */
+  
+  margin-right: 10px;  /* Space between day name and shift value */
+}
+
+/* Style for shift values (Shift Taken or No Shift) */
+.shift-details_hodstaffavailability span:last-child {
+  color: #0F6A6B;  /* Shift value (e.g., Shift Taken) in #0F6A6B */
+  font-weight: bold;  /* Optional: make the day name bold */
+}
+
+
+
+.modal_hodstaffavailability {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 250px;
+}
+/* Add margin to label */
+.modal_hodstaffavailability label {
+  margin-bottom: 10px; /* Adjust the value to control the gap */
+  display: block; /* Ensures the label is on its own line */
+  margin-top: 10px;
+}
+
+/* Add margin to select */
+.modal_hodstaffavailability select {
+  margin-top: 10px; /* Space between select label and select box */
+  padding: 8px; /* Add some padding inside the select box for better visual appeal */
+  width: 100%; /* Ensure it takes the full available width */
+}
+
+.modal-overlay_hodstaffavailability {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 500;
+}
+
+.modal-actions_hodstaffavailability {
+  margin-top: 20px;
+}
+
+.cancel-btn_hodstaffavailability, .schedule-btn_hodstaffavailability {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cancel-btn_hodstaffavailability {
+  background-color: #f44336;
+  color: white;
+  width: 40%;  /* Ensure both buttons have the same width */
+  height: 40px; /* Set the same fixed height as the Apply button */
+}
+
+.schedule-btn_hodstaffavailability {
+  background-color: #4CAF50;
+  color: white;
+  
+  width: 40%;  /* Ensure both buttons have the same width */
+  height: 40px; /* Set the same fixed height as the Apply button */
+}
+
+.cancel-btn_hodstaffavailability:hover {
+  background-color: #d73833;
+}
+
+.schedule-btn_hodstaffavailability:hover {
+  background-color: #45a049;
+}
+/* Style for the container that holds the buttons */
+.button-container_hodstaffavailability {
+  display: flex;              /* Use flexbox to arrange buttons horizontally */
+  gap: 10px;                  /* Add space between buttons */
+  justify-content: center;    /* Center the buttons horizontally */
+  align-items: center;        /* Vertically center the buttons */
+}
+
+/* Style for the approve and reject buttons */
+.approve-btn_hodstaffavailability,
+.reject-btn_hodstaffavailability {
+  width: 48%;                /* Make both buttons take equal width */
+  height: 40px;              /* Set the height for both buttons */
+  font-size: 14px;           /* Adjust the font size */
+  border-radius: 4px;        /* Make the edges of the buttons rounded */
+  cursor: pointer;          /* Make the cursor pointer when hovering */
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+.approve-btn_hodstaffavailability {
+  background-color: #11cb90;   /* Green color for approve button */
+  color: white;
+}
+
+.reject-btn_hodstaffavailability {
+  background-color: #ee6258;   /* Red color for reject button */
+  color: white;
+}
+
+/* Hover effects for both buttons */
+.approve-btn_hodstaffavailability:hover {
+  background-color: #45a049;
+}
+
+.reject-btn_hodstaffavailability:hover {
+  background-color: #d73833;
+}
