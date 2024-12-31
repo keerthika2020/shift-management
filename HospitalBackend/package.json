@@ -4,7 +4,9 @@
   "main": "Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+     "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +25,7 @@
     "mongosh": "^2.3.7",
     "multer": "^1.4.5-lts.1"
   },
-  "description": ""
+  "description": "",
+  "homepage": "https://keerthika2020.github.io/shift-management"
+
 }
