@@ -41,7 +41,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -64,5 +66,6 @@
   "devDependencies": {
     "gh-pages": "^6.2.0",
     "webpack": "^5.97.1"
-  }
+  },
+   "homepage": "https://keerthika2020.github.io/shift-management"
 }
