@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaHome, FaUsers, FaUserCheck, FaCalendarAlt, FaChartLine, FaBell, FaUser, FaSignOutAlt, FaAddressBook, FaAccessibleIcon, FaBalanceScale, FaCalendar, FaCalendarPlus } from 'react-icons/fa';
 import './Sidebar1.css'; // You can create a separate CSS file for styling
 
-const Sidebar1 = ({ username = "User" }) => {
+const Sidebar1 = ({ username = "HOD" }) => {
     return (
         <aside className="sidebar_hodsidebar">
             {/* Logo and Hospital Name */}
@@ -14,9 +14,6 @@ const Sidebar1 = ({ username = "User" }) => {
 
             {/* User Profile */}
             <div className="user-profile_hodsidebar">
-                <div className="avatar-container_hodsidebar">
-                    <img src="/assets/med2.png" alt="User Avatar" className="profile-img_hodsidebar" />
-                </div>
                 <p className="greeting_hodsidebar">👋 HELLO, {username.toUpperCase()}</p>
             </div>
 
@@ -62,11 +59,7 @@ const Sidebar1 = ({ username = "User" }) => {
                         <FaCalendarAlt className="icon_hodsidebar" /> TimeTable
                     </Link>
                 </li>
-                <li>
-                    <Link to="/compliance">
-                        <FaBalanceScale className="icon_hodsidebar" /> Compliances
-                    </Link>
-                </li>
+                
                 <li>
                     <Link to="/">
                         <FaSignOutAlt className="icon_hodsidebar" /> Log Out

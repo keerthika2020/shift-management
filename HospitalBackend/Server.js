@@ -5,7 +5,13 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
-
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+const router = express.Router();
+var fileUpload = require("express-fileupload");
+//const { User } = require('../models/User');  // Assuming you have a User model
+const session = require('express-session');
+dotenv.config();
 const app = express();
 const port = 8081;
 app.use(cors({
@@ -14,6 +20,10 @@ app.use(cors({
   credentials: true,              // Allow credentials (if needed)
 }));
 
+
+
+
+
 // MongoDB Configuration
 const mongoUri = "mongodb+srv://hasikababu01:sEMM55iJgxYQXNoJ@cluster0.1qkd7.mongodb.net/";
 const client = new MongoClient(mongoUri);
@@ -21,6 +31,23 @@ const client = new MongoClient(mongoUri);
 // Middleware
 app.use(bodyParser.json());
 
+// Middleware to verify JWT tokens
+const authenticateJWT = (req, res, next) => {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1]; // Extract token
+
+  if (!token) {
+    return res.status(403).json({ error: "Token required" });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ error: "Token is not valid" });
+    }
+    req.user = user; // Attach user info to request object
+    next();
+  });
+};
 // Configure Multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -161,19 +188,44 @@ app.post("/api/login", async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Invalid password." });
     }
-
+      
+  // Generate JWT token
+  const token = jwt.sign(
+    { id: user._id, username: user.username, role: user.roleOfAccess },
+    process.env.JWT_SECRET,
+    { expiresIn: "1h" }
+  );
     // Login successful
     res.status(200).json({
       message: "Login successful",
+      token: token, // Send token to the client
       role: user.roleOfAccess,
       username: user.username,
-      profilePicturePath: user.profilePicturePath,
+      profilePicture: user.profilePicturePath || "/assets/med2.png",
     });
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).json({ error: "Failed to login." });
   }
 });
+
+
+
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+app.post('/api/logout', (req, res) => {
+  req.session.destroy((err) => {
+      if (err) {
+          return res.status(500).json({ message: 'Error logging out' });
+      }
+
+      return res.json({ message: 'Logged out successfully' });
+  });
+});
+
+
+
 
 // Start the server
 app.listen(port, () => {

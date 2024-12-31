@@ -1,7 +1,8 @@
 import React, { useState , useEffect } from "react";
-import { BrowserRouter as Router, Routes,  Route, useLocation, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes,  Route, useLocation, Switch,useNavigate } from "react-router-dom";
 import Home from "./components/homepage/Home";
 import DoctorsList from "./components/homepage/DoctorsList";
+
 import Login from "./components/homepage/Login";
 import Register from "./components/homepage/Register";
 import AboutUs from "./pages/AboutUs";
@@ -22,7 +23,7 @@ import AttendanceTrends from './components/hodpage/AttendanceTrends';  // Import
 import ProfileSettings from './components/hodpage/ProfileSettings';  // Import ProfileSettings component
 import TimeTable from './components/hodpage/TimeTable';  // Import TimeTable component
 import  EmergencyStaffing from './components/hodpage/EmergencyStaffing';
-
+import Sidebar1 from "./components/hodpage/Sidebar1";
 
 // Admin Components
 import Sidebar2 from './components/Adminpage/Sidebar2';

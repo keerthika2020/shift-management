@@ -291,12 +291,12 @@ const Notification1 = () => {
             <div className="attachmentsSection_hodnotification">
               <div className="attachmentsIcons_hodnotification">
                 <label htmlFor="file-upload" className="attachmentIcon_hodnotification">
-                  <FaPaperclip />
+                  <FaPaperclip/>
                   <input
                     type="file"
                     id="file-upload"
                     onChange={handleFileUpload}
-                    style={{ display: "none" }}
+                    style={{ display: "none",marginTop:"2px" }}
                   />
                 </label>
                 <button

@@ -131,7 +131,8 @@ function Home() {
             <Typography variant="h4" gutterBottom>
               {slides[currentSlide].title}
             </Typography>
-            <Typography variant="body1">{slides[currentSlide].description}</Typography>
+            <Typography variant="body1" sx={{color:"black",fontFamily: "'Poppins', sans-serif",  // Apply Poppins font
+              fontWeight: 600}}>{slides[currentSlide].description }</Typography>
           </Box>
         </div>
       </Container>
