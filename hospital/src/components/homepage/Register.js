@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
 import Header from "./Header";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import NotificationCard from "./NotificationCard";
-import axios from 'axios';
-import './homeregister.css'; // Import the CSS file
+import axios from "axios";
+import "./homeregister.css"; // Import the CSS file
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -28,17 +28,20 @@ function Register() {
     emergencyContactName: "",
     emergencyRelationship: "",
     emergencyContactPhone: "",
-    profilePicture: "",
-    idProof: "",
     bankName: "",
     accountNumber: "",
     ifscCode: "",
     medicalConditions: "",
   });
 
+  const [fileData, setFileData] = useState({
+    profilePicture: null,
+    idProof: null,
+  });
+
   const [notification, setNotification] = useState({
     message: "",
-    type: "", 
+    type: "",
   });
 
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -55,26 +58,58 @@ function Register() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    const { name } = e.target;
+    setFileData({ ...fileData, [name]: e.target.files[0] });
+  };
+
   const handlePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible); 
+    setPasswordVisible(!passwordVisible);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-        const response = await axios.post("http://localhost:5000/api/register", formData); // Send data to backend
-        setNotification({ message: response.data.message, type: "success" });
-        setFormData({}); // Reset form
-        setTimeout(() => {
-            navigate("/"); // Redirect after successful registration
-        }, 3000);
-    } catch (err) {
-        setNotification({
-            message: err.response?.data?.message || "Error registering user",
-            type: "error",
-        });
+  
+    const formDataToSend = new FormData();
+  
+    // Append form data
+    Object.keys(formData).forEach((key) => {
+      if (formData[key]) formDataToSend.append(key, formData[key]); // Append only non-empty fields
+    });
+  
+    // Append files
+    if (fileData.profilePicture) {
+      formDataToSend.append("profilePicture", fileData.profilePicture);
     }
-};
+    if (fileData.idProof) {
+      formDataToSend.append("idProof", fileData.idProof);
+    }
+  
+    console.log([...formDataToSend.entries()]); // Debugging: Inspect the data being sent
+  
+    try {
+      const response = await axios.post("http://localhost:8081/api/register", formDataToSend, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+  
+      setNotification({ 
+        message: `Welcome, ${formData.username}! ${response.data.message}`, 
+        type: "success" 
+      });
+      setTimeout(() => {
+        navigate("/"); // Redirect after successful registration
+      }, 3000);
+    } catch (err) {
+      console.error("Error:", err.response?.data?.error || err.message); // Debug error
+      setNotification({
+        message: err.response?.data?.error || "Error registering user",
+        type: "error",
+      });
+    }
+  };
+  
 
   return (
     <div>
@@ -146,10 +181,14 @@ function Register() {
                 <input type="text" id="department" name="department" value={formData.department} onChange={handleChange} required />
               </div>
               <div className="form-group_homeregister">
-                <label htmlFor="roleOfAccesss">Role</label>
-                <select id="roleOfAccesss" name="roleOfAccesss" value={formData.roleOfAccess}
+                <label htmlFor="roleOfAccess">Role</label> {/* Fixed name */}
+                <select
+                  id="roleOfAccess"
+                  name="roleOfAccess"
+                  value={formData.roleOfAccess}
                   onChange={handleChange}
-                  required>
+                  required
+                >
                   <option value="">Select Role of Access</option>
                   <option value="Admin">Admin</option>
                   <option value="Management">Management</option>
@@ -225,11 +264,11 @@ function Register() {
               <h2 className="section-title_homeregister">6. Additional Information</h2>
               <div className="form-group_homeregister">
                 <label htmlFor="profile_picture">Profile Picture</label>
-                <input type="file" id="profile_picture" name="profilePicture" onChange={handleChange} />
+                <input type="file" id="profile_picture" name="profilePicture" onChange={handleFileChange} required />
               </div>
               <div className="form-group_homeregister">
                 <label htmlFor="id_proof">Identification Proof</label>
-                <input type="file" id="id_proof" name="idProof" onChange={handleChange} />
+                <input type="file" id="id_proof" name="idProof" onChange={handleFileChange} required />
               </div>
               <div className="form-group_homeregister">
                 <label htmlFor="bank_name">Bank Name</label>

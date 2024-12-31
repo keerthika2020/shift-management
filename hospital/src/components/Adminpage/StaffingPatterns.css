@@ -1,0 +1,95 @@
+/* General Container Styling */
+.staffing-patterns-container {
+  padding: 20px;
+  margin-left: 240px; /* To account for sidebar */
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: #004d40;
+  margin-bottom: 20px;
+}
+
+/* Grid Layout for Card View */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+  gap: 20px;
+}
+
+/* Card Styling */
+.card {
+  background-color: #e0f2f1;
+  border: 1px solid #004d40;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  color: #004d40;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #00695c;
+  margin-bottom: 15px;
+}
+
+.action-button {
+  background-color: #004d40;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #00251a;
+}
+
+/* Rectangular Card Styling */
+.rectangular-card {
+  background-color: #e0f7fa;
+  border: 2px solid #004d40;
+  border-radius: 8px;
+  padding: 30px;
+  margin-top: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rectangular-card h2 {
+  font-size: 1.8rem;
+  color: #004d40;
+  margin-bottom: 15px;
+}
+
+.rectangular-card p {
+  font-size: 1rem;
+  color: #00695c;
+  margin-bottom: 20px;
+}
+
+.rectangular-action-button {
+  background-color: #004d40;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.rectangular-action-button:hover {
+  background-color: #00251a;
+}

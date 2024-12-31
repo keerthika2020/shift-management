@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Sidebar from './Sidebar'; // Import the Sidebar component
+import Sidebar from './Sidebar1'; // Import the Sidebar component
 import './hodpagestyles/hodstaffavailability.css';
 
 const StaffAvailability = () => {

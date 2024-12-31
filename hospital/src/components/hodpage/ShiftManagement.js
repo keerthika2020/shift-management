@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Sidebar from './Sidebar'; // Import the Sidebar component
+import Sidebar1 from './Sidebar1'; // Import the Sidebar component
 import './hodpagestyles/hodshiftmanagement.css'
 
 
@@ -162,7 +162,7 @@ const ShiftManagement = () => {
     return (
       <div className="hodshiftmanagement-container">
         <div className="hodshiftmanagement-sidebar">
-          <Sidebar />
+          <Sidebar1 />
         </div>
   
         <div className="hodshiftmanagement-main">

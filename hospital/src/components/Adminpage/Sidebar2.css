@@ -1,0 +1,176 @@
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #0f6a6b;
+    color: #fff;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Logo */
+.hospital-logo {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Hospital Name */
+.hospital-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* User Profile */
+.user-profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Avatar Container */
+.avatar-container {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Greeting */
+.greeting {
+    font-size: 1rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* Navigation List */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 15px 0;
+}
+
+/* Submenu Section Fix */
+.nav-links li.submenu {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Ensure submenu aligns within the parent */
+}
+
+.nav-links li a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.nav-links li a.active,
+.nav-links li a:hover {
+    background-color: #0a4c4d;
+    transform: scale(1.05);
+}
+
+.nav-links li a .icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+/* Analytics Section */
+.submenu > div {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover effect for Analytics main menu */
+.submenu > div:hover {
+    background-color: #0a4c4d;
+    transform: scale(1.05);
+}
+/* Submenu Items */
+.submenu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 20px; /* Indentation for submenu */
+}
+
+.submenu-items li {
+    margin: 10px 0;
+}
+
+.submenu-items li a {
+    display: block;
+    font-size: 0.9rem;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.submenu-items li a:hover {
+    background-color: #0a4c4d;
+}
+
+/* Modal Styles */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}

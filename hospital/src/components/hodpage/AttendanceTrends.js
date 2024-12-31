@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from './Sidebar'; // Assuming Sidebar.js exists in the same directory
+import Sidebar1 from './Sidebar1'; // Assuming Sidebar.js exists in the same directory
 import {
   Chart as ChartJS,
   BarElement,
@@ -66,7 +66,7 @@ const AttendanceTrends = () => {
 
   return (
     <div className="container_hodattendancetrends">
-      <Sidebar />
+      <Sidebar1 />
       <div className="content_hodattendancetrends">
         <div className="header_hodattendancetrends">
           <h1>Attendance Trends</h1>

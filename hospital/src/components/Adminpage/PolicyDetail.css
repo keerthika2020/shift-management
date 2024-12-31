@@ -1,0 +1,71 @@
+/* Ensuring the sidebar doesn't overlap with content */
+.policy-detail {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 250px; /* Adjust this based on the width of the sidebar */
+  width: calc(100% - 270px); /* Ensure the content takes the remaining width */
+}
+
+/* Styling for the back button */
+.back-btn {
+  margin-bottom: 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Header styles for policy details */
+.policy-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.policy-icon {
+  font-size: 28px;
+  color: #007bff;
+  margin-right: 10px;
+}
+
+.policy-header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* Styling for the policy content */
+.policy-content {
+  font-size: 16px;
+  color: #666;
+}
+
+.policy-point {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.policy-point li {
+  list-style-type: disc;
+  font-size: 16px;
+  margin: 5px 0;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+/* Preformatted text for policy content */
+.policy-detail pre {
+  font-size: 16px;
+  color: #666;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Adjusting the button margin */
+button {
+  margin-bottom: 20px;
+}

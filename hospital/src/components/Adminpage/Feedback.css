@@ -1,0 +1,120 @@
+.feedback-support {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  background-color: #f4f7f6;
+  margin-left: 250px; /* Adjust this value based on the width of your sidebar */
+  border-radius: 8px; /* Rounded corners for a modern look */
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.issue-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding subtle shadow */
+}
+
+.issue-card.good {
+  border-left: 5px solid #28a745; /* Change to the correct green */
+  background-color: #e6f7e6;
+}
+
+.issue-card.bad {
+  border-left: 5px solid #dc3545; /* Adjust red tone */
+  background-color: #f8d7da;
+}
+
+.issue-header h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  color: #333;
+}
+
+.status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 20px; /* Make status tags rounded */
+  font-size: 14px;
+}
+
+.status.pending {
+  background-color: #ff9800;
+  color: white;
+}
+
+.status.resolved {
+  background-color: #28a745;
+  color: white;
+}
+
+.status.escalated {
+  background-color: #dc3545;
+  color: white;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 12px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn.view {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn.view:hover {
+  background-color: #45a049;
+}
+
+.btn.resolve {
+  background-color: #2196f3;
+  color: white;
+}
+
+.btn.resolve:hover {
+  background-color: #1e88e5;
+}
+
+.btn.assign {
+  background-color: #ff9800;
+  color: white;
+}
+
+.btn.assign:hover {
+  background-color: #fb8c00;
+}
+
+.btn.escalate {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn.escalate:hover {
+  background-color: #e53935;
+}
+
+.details {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+  font-size: 14px;
+}

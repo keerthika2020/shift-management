@@ -1,0 +1,31 @@
+/* Chart Section */
+.charts-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Remove excess gap */
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  
+  .chart {
+    flex: 1; /* Allow charts to expand */
+    min-width: 400px; /* Set a minimum width for the charts */
+    max-width: 600px; /* Max width for better control */
+    margin: 0 10px; /* Add some margin between charts */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .chart-container {
+    height: 300px; /* Adjust chart height for better spacing */
+  }
+  

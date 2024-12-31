@@ -1,0 +1,31 @@
+.policy-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-left: 250px; /* Adjust this based on your sidebar width */
+  transition: margin-left 0.3s ease; /* Smooth transition for sidebar toggle */
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-policy-button {
+  display: block;
+  margin: 20px auto;
+}
+
+.policy-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.policy-card .card-content {
+  text-align: center;
+}
+
+.policy-card h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}

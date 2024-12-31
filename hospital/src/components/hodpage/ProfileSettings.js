@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar";
+import Sidebar1 from "./Sidebar1";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import "./hodpagestyles/hodprofilesettings.css";
@@ -22,7 +22,7 @@ const ProfileSettings = () => {
 
   return (
     <div className="container_hodprofilesettings">
-      <Sidebar />
+      <Sidebar1 />
       <div className="content_hodprofilesettings">
         <h1 className="header_hodprofilesettings">PROFILE SETTINGS</h1>
 

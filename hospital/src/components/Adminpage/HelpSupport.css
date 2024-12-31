@@ -1,0 +1,167 @@
+/* General Layout */
+.help-support-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-left: 260px; /* Adjust this value to match your sidebar's width */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* Tab Buttons */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab-buttons button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Content Layout */
+.content {
+    display: flex;
+    gap: 20px;
+}
+
+/* Message List */
+.message-list {
+    flex: 1;
+    max-width: 400px;
+    border-right: 1px solid #ddd;
+    padding-right: 20px;
+    overflow-y: auto;
+    height: 500px;
+}
+
+.message-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.message-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.message-card p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.message-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #888;
+}
+
+/* Message Details */
+.message-details {
+    flex: 2;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+/* Form for Reply */
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Attachment Section */
+.form-group input[type="file"] {
+    padding: 5px;
+    background-color: #f0f0f0;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .message-list {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .message-details {
+        max-width: 100%;
+    }
+}

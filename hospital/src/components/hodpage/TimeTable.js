@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./hodpagestyles/hodtimetable.css";
-import Sidebar from "./Sidebar";
+import Sidebar1 from "./Sidebar1";
 
 const TimeTable = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -64,7 +64,7 @@ const TimeTable = () => {
 
   return (
     <div className="container_hodtimetable">
-      <Sidebar />
+      <Sidebar1 />
 
       <div className="main_hodtimetable">
         <h1 className="header_hodtimetable" style={{color:"#0F6A6B",textAlign:"center" ,  }}>Schedules</h1>

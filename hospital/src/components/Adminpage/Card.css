@@ -1,0 +1,27 @@
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+  }
+  
+  .card .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;
+    color: #0f6a6b;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  

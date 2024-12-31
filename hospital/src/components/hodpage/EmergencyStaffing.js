@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Sidebar from './Sidebar'; // Import your existing Sidebar component
+import Sidebar1 from './Sidebar1'; // Import your existing Sidebar component
 import './hodpagestyles/hodemergencystaffing.css';
 
 const EmergencyStaffing = () => {
   const [staffData, setStaffData] = useState([
     { name: 'John Doe', role: 'Nurse', department: 'Surgery', availability: 'Off-Shift', notified: false },
-    { name: 'Jane Smith', role: 'Technician', department: 'Radiology', availability: 'Off-Shift', notified: false },
-    { name: 'Emily Brown', role: 'Doctor', department: 'Pediatrics', availability: 'Off-Shift', notified: false },
+    { name: 'Jane Smith', role: 'Technician', department: 'Cardiology', availability: 'Off-Shift', notified: false },
+    { name: 'Emily Brown', role: 'Doctor', department: 'Cardiology', availability: 'Off-Shift', notified: false },
     { name: 'Michael Davis', role: 'Nurse', department: 'ICU', availability: 'On-Shift', notified: false },
     { name: 'Sarah Johnson', role: 'Nurse', department: 'Cardiology', availability: 'Off-Shift', notified: false }
   ]);
@@ -53,7 +53,7 @@ const EmergencyStaffing = () => {
     <div className="container_hodemergencystaffing">
       {/* Sidebar */}
       <div className="sidebarWrapper_hodemergencystaffing">
-        <Sidebar />
+        <Sidebar1 />
       </div>
 
       {/* Main Content */}
