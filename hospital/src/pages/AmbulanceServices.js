@@ -26,7 +26,7 @@ const AmbulanceServices = () => {
           <Grid container spacing={4}>
             {[
               { name: "Basic Life Support (BLS)", image: "/assets/ambulance/basicls.png", description: "For non-critical patients requiring basic medical care and transportation." },
-              { name: "Advanced Life Support (ALS)", image: "/assets/ambulance/advancedls.jpeg", description: "Equipped with advanced medical equipment for critical patients." },
+              { name: "Advanced Life Support ", image: "/assets/ambulance/advancedls.jpeg", description: "Equipped with advanced medical equipment for critical patients." },
               { name: "Neonatal Ambulance", image: "/assets/ambulance/neonatal.jpg", description: "Specially designed for transporting infants with medical supervision." },
               { name: "Critical Care Ambulance", image: "/assets/ambulance/critical.png", description: "For patients needing intensive monitoring and medical intervention during transportation." },
             ].map((ambulance, index) => (
