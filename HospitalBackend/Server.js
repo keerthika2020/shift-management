@@ -26,8 +26,8 @@ app.use(cors({
 
 
 // MongoDB Configuration
-const mongoUri =  process.env.MONGO_URI || "mongodb+srv://hasikababu01:sEMM55iJgxYQXNoJ@cluster0.1qkd7.mongodb.net/";
-const client = new MongoClient(mongoUri);
+const MONGO_URI =  process.env.MONGO_URI || "mongodb+srv://hasikababu01:sEMM55iJgxYQXNoJ@cluster0.1qkd7.mongodb.net/";
+const client = new MongoClient(MONGO_URI);
 
 // Middleware
 app.use(bodyParser.json());
