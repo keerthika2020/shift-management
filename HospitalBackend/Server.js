@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const router = express.Router();
