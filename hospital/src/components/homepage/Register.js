@@ -88,7 +88,7 @@ function Register() {
     console.log([...formDataToSend.entries()]); // Debugging: Inspect the data being sent
   
     try {
-      const response = await axios.post("http://localhost:8081/api/register", formDataToSend, {
+      const response = await axios.post("https://smart-shift-management31.onrender.com/api/register", formDataToSend, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
