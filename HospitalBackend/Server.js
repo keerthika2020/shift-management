@@ -192,7 +192,7 @@ app.post("/api/login", async (req, res) => {
   // Generate JWT token
   const token = jwt.sign(
     { id: user._id, username: user.username, role: user.roleOfAccess },
-    process.env.JWT_SECRET,
+    "mysecretpass",
     { expiresIn: "1h" }
   );
     // Login successful
