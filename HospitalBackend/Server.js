@@ -13,7 +13,7 @@ var fileUpload = require("express-fileupload");
 const session = require('express-session');
 dotenv.config();
 const app = express();
-const port = 8081;
+const PORT = 8081;
 app.use(cors({
   origin: "http://localhost:3000", // Allow requests from this origin
   methods: "GET,POST,PUT,DELETE", // Specify allowed methods
@@ -228,6 +228,6 @@ app.post('/api/logout', (req, res) => {
 
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
