@@ -36,7 +36,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8082/api/login", {
+      const response = await fetch("https://smart-shift-management31-008t.onrender.com/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,8 +56,8 @@ function Login() {
         } else if (data.role === "Admin") {
           navigate("/Adminpage/Dashboard2"); // Admin Dashboard
         } else if (data.role === "Staff") {
-          navigate("/staffpage/PersonalOverviewStaffPage"); // staff 
-        }
+          navigate("/staffpage/PersonalOverviewStaffPage");
+        }    
       } else {
         setErrorMessage(data.error);
       }
@@ -184,7 +184,7 @@ function ForgotPassword() {
 
   const handleSendLink = async () => {
     try {
-      const response = await fetch("http://localhost:8082/api/forgot-password", {
+      const response = await fetch("https://smart-shift-management31-008t.onrender.com/api/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -271,7 +271,7 @@ function ResetPassword({  }) {
     }
 
     try {
-      const response = await fetch("http://localhost:8082/api/reset-password", {
+      const response = await fetch("https://smart-shift-management31-008t.onrender.com/api/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ resetToken, email, newPassword: password }),

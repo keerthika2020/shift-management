@@ -128,7 +128,8 @@ function App() {
       <Route path="/Adminpage/policy-section/add" element={<AdminLayout><AddPolicyForm /></AdminLayout>} />
       <Route path="/Adminpage/help-support" element={<AdminLayout><HelpSupport /></AdminLayout>} />
 
-      <Route path="/staffpage/PersonalOverview" element={<PersonalOverviewStaffPage />} />
+      <Route path="/staffpage/PersonalOverviewStaffPage" element={<PersonalOverviewStaffPage />} />
+
       </Routes> 
       
       </div>

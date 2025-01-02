@@ -10,7 +10,7 @@ function DoctorsList() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await fetch(`http://localhost:8082/api/doctors/${department}`, {
+        const response = await fetch(`https://smart-shift-management31-008t.onrender.com/api/doctors/${department}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`, // Assuming JWT token is stored in localStorage
           }
@@ -60,7 +60,7 @@ function DoctorsList() {
                 component="img"
                 alt={`${doctor.firstName} ${doctor.lastName}`}
                 height="300"
-                image={`http://localhost:8082${doctor.profilePicture}`}
+                image={`https://smart-shift-management31-008t.onrender.com${doctor.profilePicture}`}
                 // Use profilePicture URL
                 style={{ borderRadius: "15px 15px 0 0" }}
               />

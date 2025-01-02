@@ -30,6 +30,7 @@ app.use(cors({
 
 
 
+
 // MongoDB Configuration
 const MONGO_URI =  process.env.MONGO_URI || "mongodb+srv://hasikababu01:sEMM55iJgxYQXNoJ@cluster0.1qkd7.mongodb.net/";
 const client = new MongoClient(MONGO_URI);
@@ -295,7 +296,7 @@ app.post("/api/forgot-password", async (req, res) => {
     );
 
     // Send email with reset link
-    const resetLink = `http://localhost:3000/reset-password/${resetToken}`;
+    const resetLink = `https://bejewelled-tiramisu-949b9c.netlify.app/reset-password/${resetToken}`;
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -308,12 +309,13 @@ app.post("/api/forgot-password", async (req, res) => {
       from: process.env.GMAIL_USER,
       to: email,
       subject: "Password Reset Request",
-      html: `
-        <h1>Password Reset</h1>
-        <p>Click the link below to reset your password:</p>
-        <a href="${resetLink}" target="_blank">Reset Password</a>
-        <p>This link is valid for 1 hour.</p>
-      `,
+      text: `You requested a password reset. Click the link below to reset your password:\n${resetLink}\nIf you didn't request this, please ignore this email.`,
+  html: `
+    <p style="font-size: 16px; color: #333;">You requested a password reset. Click the link below to reset your password:</p>
+    <a href="${resetLink}" style="display: inline-block; background-color: #007BFF; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;">Reset Password</a>
+    <p style="font-size: 14px; color: #555;">If you didn't request this, please ignore this email.</p>
+  `,
+    
     };
 
     await transporter.sendMail(mailOptions);

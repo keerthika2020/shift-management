@@ -196,7 +196,7 @@ const Dashboard1 = () => {
         }
   
         try {
-          const response = await fetch("http://localhost:8082/api/protected", {
+          const response = await fetch("https://smart-shift-management31-008t.onrender.com/api/protected", {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
