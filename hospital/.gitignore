@@ -22,4 +22,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 # backend.env file
-JWT_SECRET="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzM4ZmJmY2E1NTIzM2UwMzBhZTAwMiIsInVzZXJuYW1lIjoia2lraSIsInJvbGUiOiJNYW5hZ2VtZW50IiwiaWF0IjoxNzM1NjUwMTg3LCJleHAiOjE3MzU2NTM3ODd9.-EpOTXFIb0UG9E_Qje4iI9gNypn8sahX2EqS_gB67Ak"
+.env

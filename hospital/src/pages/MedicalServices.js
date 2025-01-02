@@ -147,8 +147,9 @@ const MedicalServices = () => {
         </Typography>
 
         {/* Call to Action */}
-        <Box sx={{ textAlign: "center", marginTop: "40px" }}>
-          <Button variant="contained" color="primary" size="large">
+        <Box sx={{ textAlign: "center", marginTop: "40px" ,width:"35%",marginLeft:"34%"}}>
+          <Button variant="contained" color="primary" size="large" component="a"
+    href="/register">
             Join Our Mission to Deliver Exceptional Healthcare
           </Button>
         </Box>

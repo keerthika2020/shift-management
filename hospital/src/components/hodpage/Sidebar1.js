@@ -1,10 +1,14 @@
-import React from 'react';
+import React , { useContext }from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from "../../context/UserContext";
+
 import { FaHome, FaUsers, FaUserCheck, FaCalendarAlt, FaChartLine, FaBell, FaUser, FaSignOutAlt, FaAddressBook, FaAccessibleIcon, FaBalanceScale, FaCalendar, FaCalendarPlus } from 'react-icons/fa';
 import './Sidebar1.css'; // You can create a separate CSS file for styling
 
-const Sidebar1 = ({ username = "HOD" }) => {
+const Sidebar1 = () => {
+    const { username1 } = useContext(UserContext);
     return (
+
         <aside className="sidebar_hodsidebar">
             {/* Logo and Hospital Name */}
             <div className="sidebar-header_hodsidebar">
@@ -14,7 +18,7 @@ const Sidebar1 = ({ username = "HOD" }) => {
 
             {/* User Profile */}
             <div className="user-profile_hodsidebar">
-                <p className="greeting_hodsidebar">👋 HELLO, {username.toUpperCase()}</p>
+                <p className="greeting_hodsidebar">👋 HELLO, {username1.toUpperCase()}</p>
             </div>
 
             {/* Navigation Links */}

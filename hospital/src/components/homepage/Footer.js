@@ -1,8 +1,22 @@
-import React from "react";
+import React ,{ useState } from "react";
 import { Box, Typography, TextField, Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom"; // Importing Link from react-router-dom
+import {  Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+
 
 const Footer = () => {
+    // State to manage dialog open/close
+    const [open, setOpen] = useState(false);
+
+    // Function to handle the opening of the dialog
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    // Function to handle the closing of the dialog
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <footer  id="footer" style={{ backgroundColor: "#0F6A6B", color: "#fff", padding: "20px" }}>
             <Grid container spacing={4}>
@@ -91,9 +105,31 @@ const Footer = () => {
                         placeholder="Your Email"
                         sx={{ backgroundColor: "#fff", borderRadius: "4px", marginRight: "10px", width: "600px" }}
                     />
-                    <Button variant="contained" color="primary" style={{ backgroundColor: "#054D4F", width: "100px", marginRight: "10px" }}>
-                        Subscribe
+                    <div>
+            {/* Subscribe Button */}
+            <Button 
+                variant="contained" 
+                color="primary" 
+                style={{ backgroundColor: "#054D4F", width: "100px", marginRight: "10px" }} 
+                onClick={handleClickOpen}
+            >
+                Subscribe
+            </Button>
+
+            {/* Dialog Popup */}
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Thank You for Subscribing!</DialogTitle>
+                <DialogContent>
+                    <p>We're thrilled to have you with us. Stay tuned for exciting updates and offers!</p>
+                    <p>You're now part of our exclusive community.</p>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Close
                     </Button>
+                </DialogActions>
+            </Dialog>
+        </div>
                 </Box>
                 <Typography variant="body2" align="center" mt={2}>
                     © 2023 Vitality Lifecare | <Link to="/privacy-policy" style={linkStyle}>Privacy Policy</Link> | <Link to="/terms-conditions" style={linkStyle}>Terms & Conditions</Link>

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 import { 
   FaHome, FaUsers, FaChartPie, FaCommentDots, FaBell, 
   FaFileAlt, FaSignOutAlt, FaLifeRing 
 } from "react-icons/fa"; // FaLifeRing icon added for Help & Support
 import "./Sidebar2.css";
 
-const Sidebar2 = ({ username = "Admin" }) => {
+const Sidebar2 = () => {
+   const { username1 } = useContext(UserContext);
   const [isAnalyticsOpen, setIsAnalyticsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [clickedImage, setClickedImage] = useState(""); // State to store clicked image URL
@@ -51,7 +53,7 @@ const Sidebar2 = ({ username = "Admin" }) => {
           />
         </div>
         <p className="greeting">
-          <span>👋</span> HELLO, {username.toUpperCase()}
+          <span>👋</span> HELLO, {username1.toUpperCase()}
         </p>
       </div>
 

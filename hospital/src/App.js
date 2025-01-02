@@ -2,8 +2,12 @@ import React, { useState , useEffect } from "react";
 import { BrowserRouter as Router, Routes,  Route, useLocation, Switch,useNavigate } from "react-router-dom";
 import Home from "./components/homepage/Home";
 import DoctorsList from "./components/homepage/DoctorsList";
+import { UserContext } from "./context/UserContext"; // Adjust the path based on the location of your file
+import { UserProvider } from "./context/UserContext";
 
-import Login from "./components/homepage/Login";
+ // Adjust based on relative path
+
+ import Login, { ForgotPassword, ResetPassword } from "./components/homepage/Login";
 import Register from "./components/homepage/Register";
 import AboutUs from "./pages/AboutUs";
 import OurServices from "./pages/OurServices";
@@ -49,7 +53,8 @@ import "./components/Adminpage/PolicySection.css";
 import "./components/Adminpage/PolicyDetail.css";
 import "./components/Adminpage/HelpSupport.css";
 
-
+//staff page imports
+import PersonalOverviewStaffPage from './components/staffpage/PersonalOverviewStaffPage';
 
 // Admin Layout Wrapper
 function AdminLayout({ children }) {
@@ -82,13 +87,15 @@ function App() {
  
 
   return (
-    
+    <UserProvider>
     <Router>
       <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/doctors/:specialization" element={<DoctorsList />} />
+        <Route path="/doctors/:department" element={<DoctorsList />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/services" element={<OurServices />} />
@@ -120,11 +127,13 @@ function App() {
       <Route path="/Adminpage/policy-section/:policyId" element={<AdminLayout><PolicyDetail /></AdminLayout>} />
       <Route path="/Adminpage/policy-section/add" element={<AdminLayout><AddPolicyForm /></AdminLayout>} />
       <Route path="/Adminpage/help-support" element={<AdminLayout><HelpSupport /></AdminLayout>} />
+
+      <Route path="/staffpage/PersonalOverview" element={<PersonalOverviewStaffPage />} />
       </Routes> 
       
       </div>
     </Router>
-   
+    </UserProvider>
     
    
     

@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import VisionMissionValues from "./VisionMissionValues";
 import Footer from "./Footer";
-//import LocationContent from "../LocationContent";
 import "./styles.css"; // Adjust styles as needed.
-
 
 const slides = [
   {
@@ -27,7 +25,7 @@ const slides = [
   },
 ];
 
-const specializations = [
+const departments = [
   "Cardiology",
   "Neurology",
   "Gastroenterology",
@@ -60,7 +58,7 @@ const locations = [
       address: "5/639, Rajiv Gandhi Salai, Tirumalai Nagar, Perungudi, Chennai, Tamil Nadu 600096",
       phone: "+91 98765 43210",
       email: "chennai@vitalitygroup.com",
-      mapUrl: "https://www.google.com/maps?q=123+Marina+Road,+Chennai,+Tamil+Nadu,600001", // Google map URL
+      mapUrl: "https://www.google.com/maps?q=123+Marina+Road,+Chennai,+Tamil+Nadu,600001",
     },
   },
   {
@@ -100,9 +98,6 @@ function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  
-   
-
   const handleLocationClick = (location) => {
     setSelectedLocation(location);
   };
@@ -114,7 +109,7 @@ function Home() {
       <Container>
         <div className="slideshow">
           <img
-            src={slides[currentSlide].image}
+            src={slides[currentSlide].image} options={{ responsive: true }}
             alt={slides[currentSlide].title}
             className="slideshow-image"
           />
@@ -124,29 +119,38 @@ function Home() {
               left: "2%",
               top: "50%",
               transform: "translateY(-50%)",
-              color: "white",
+              color: "#0F6A6B",
               maxWidth: "50%",
             }}
           >
             <Typography variant="h4" gutterBottom>
               {slides[currentSlide].title}
             </Typography>
-            <Typography variant="body1" sx={{color:"black",fontFamily: "'Poppins', sans-serif",  // Apply Poppins font
-              fontWeight: 600}}>{slides[currentSlide].description }</Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "black",
+                fontFamily: "'Poppins', sans-serif",
+                fontWeight: 300,
+              }}
+              
+            >
+              {slides[currentSlide].description} 
+            </Typography>
           </Box>
         </div>
       </Container>
 
-      {/* Specializations Section */}
-      <Container id="specializations" sx={{ marginTop: 5 }}>
+      {/* Departments Section */}
+      <Container id="departments" sx={{ marginTop: 5 }}>
         <Box textAlign="center" mb={3}>
           <Typography
             variant="h4"
             gutterBottom
             sx={{
-              fontFamily: "'Poppins', sans-serif",  // Apply Poppins font
-              fontWeight: 600,  // Bold weight
-              color: "#0F6A6B",  // Custom color
+              fontFamily: "'Poppins', sans-serif",
+              fontWeight: 600,
+              color: "#0F6A6B",
             }}
           >
             Experience Commence Of Clinical Excellence
@@ -157,33 +161,30 @@ function Home() {
             variant="h6"
             gutterBottom
             sx={{
-              fontFamily: "'Poppins', sans-serif",  // Apply Poppins font
-              fontWeight: 100,  // Bold weight
-              color: "black",  // Custom color
+              fontFamily: "'Poppins', sans-serif",
+              fontWeight: 100,
+              color: "black",
             }}
           >
-           Vitality Hospitals has dedicated Centres of Excellence for serveral key specialties
-and super specialties. They are unique and state of the art facilities spread across
-several of the Vitality hospital locations and each Centre of Excellence stands out
-as a citadel of world class clinical outcomes.
+            Vitality Hospitals has dedicated Centres of Excellence for several key departments and super departments. They are unique and state-of-the-art facilities spread across several of the Vitality hospital locations and each Centre of Excellence stands out as a citadel of world-class clinical outcomes.
           </Typography>
         </Box>
         <Typography
           variant="h5"
           gutterBottom
           sx={{
-            fontFamily: "'Poppins', sans-serif",  // Apply Poppins font
-            fontWeight: 600,  // Bold weight
-            color: "#0F6A6B",  // Custom color
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 600,
+            color: "#0F6A6B",
           }}
         >
-          Explore Our Specializations
+          Explore Our Departments
         </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
             <img
               src="/assets/spc.png"
-              alt="Specializations"
+              alt="Departments"
               style={{
                 width: "100%",
                 height: "100%",
@@ -194,12 +195,15 @@ as a citadel of world class clinical outcomes.
           </Grid>
           <Grid item xs={12} md={8}>
             <Grid container spacing={1}>
-              {specializations.map((spec) => (
-                <Grid item xs={3} key={spec}>
-                  <Link to={`/doctors/${spec.toLowerCase()}`} className="specialization-icon">
+              {departments.map((dept) => (
+                <Grid item xs={3} key={dept}>
+                  <Link
+                    to={`/doctors/${dept.toLowerCase()}`}
+                    className="department-icon"
+                  >
                     <img
-                      src={`/assets/${spec.toLowerCase()}.png`}
-                      alt={spec}
+                      src={`/assets/${dept.toLowerCase()}.png`}
+                      alt={dept}
                       style={{
                         width: "100%",
                         maxWidth: "90px",
@@ -214,7 +218,6 @@ as a citadel of world class clinical outcomes.
           </Grid>
         </Grid>
       </Container>
-      
 
       {/* Hospital in TamilNadu Content */}
       <Container id="location" sx={{ marginTop: 5 }}>
@@ -222,10 +225,10 @@ as a citadel of world class clinical outcomes.
           variant="h4"
           gutterBottom
           sx={{
-            textAlign:"center",
-            fontFamily: "'Poppins', sans-serif",  // Apply Poppins font
-            fontWeight: 600,  // Bold weight
-            color: "#0F6A6B",  // Custom color
+            textAlign: "center",
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 600,
+            color: "#0F6A6B",
           }}
         >
           Hospitals In TamilNadu
@@ -234,9 +237,9 @@ as a citadel of world class clinical outcomes.
           variant="body1"
           gutterBottom
           sx={{
-            fontFamily: "'Poppins', sans-serif",  // Apply Poppins font
-            fontWeight: 200,  // Bold weight
-            color: "black",  // Custom color
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 200,
+            color: "black",
           }}
         >
           The Vitality Group is one of the best hospital groups in TamilNadu with over 8,000+ beds across 3+ hospitals, 6,000+ pharmacies, over 300+ clients, 800+ diagnostic centres, and 200+ Telemedicine units.
@@ -249,7 +252,7 @@ as a citadel of world class clinical outcomes.
           variant="h5"
           gutterBottom
           sx={{
-            fontFamily: "'Poppins', sans-serif",  // Apply Poppins font
+            fontFamily: "'Poppins', sans-serif",
             fontWeight: 600,  // Bold weight
             color: "#0F6A6B",  // Custom color
           }}

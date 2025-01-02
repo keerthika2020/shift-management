@@ -4,10 +4,10 @@ import './hodpagestyles/hodstaffavailability.css';
 
 const StaffAvailability = () => {
     const [staffData, setStaffData] = useState([
-      { name: 'John Doe', role: 'Nurse', department: 'Surgery', shifts: [1, 1, 1, 0, 1, 0, 1], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending',fromTo: '2024-11-30 to 2024-12-31' },
-      { name: 'Jane Smith', role: 'Technician', department: 'Radiology', shifts: [0, 1, 1, 1, 1, 1, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-05 to 2024-12-31'},
-      { name: 'Emily Brown', role: 'Doctor', department: 'Pediatrics', shifts: [1, 0, 1, 1, 1, 1, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
-      { name: 'Michael Davis', role: 'Nurse', department: 'ICU', shifts: [1, 1, 1, 1, 1, 1, 1], availability: 'On-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
+      { name: 'John Doe', role: 'Nurse', department: 'Cardiology', shifts: [1, 1, 1, 0, 1, 0, 1], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending',fromTo: '2024-11-30 to 2024-12-31' },
+      { name: 'Jane Smith', role: 'Technician', department: 'Cardiology', shifts: [0, 1, 1, 1, 1, 1, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-05 to 2024-12-31'},
+      { name: 'Emily Brown', role: 'Doctor', department: 'Cardiology', shifts: [1, 0, 1, 1, 1, 1, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
+      { name: 'Michael Davis', role: 'Nurse', department: 'Cardiology', shifts: [1, 1, 1, 1, 1, 1, 1], availability: 'On-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
       { name: 'Sarah Johnson', role: 'Nurse', department: 'Cardiology', shifts: [0, 1, 1, 1, 1, 0, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31' },
     ]);
   
@@ -24,10 +24,10 @@ const StaffAvailability = () => {
 
     useEffect(() => {
       const data = [
-        { name: 'John Doe', role: 'Nurse', department: 'Surgery', shifts: [1, 1, 1, 0, 1, 0, 1], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending',fromTo: '2024-12-30 to 2024-12-31' },
-        { name: 'Jane Smith', role: 'Technician', department: 'Radiology', shifts: [0, 1, 1, 1, 1, 1, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
-        { name: 'Emily Brown', role: 'Doctor', department: 'Pediatrics', shifts: [1, 0, 1, 1, 1, 1, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
-        { name: 'Michael Davis', role: 'Nurse', department: 'ICU', shifts: [1, 1, 1, 1, 1, 1, 1], availability: 'On-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
+        { name: 'John Doe', role: 'Nurse', department: 'Cardiology', shifts: [1, 1, 1, 0, 1, 0, 1], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending',fromTo: '2024-12-30 to 2024-12-31' },
+        { name: 'Jane Smith', role: 'Technician', department: 'Cardiology', shifts: [0, 1, 1, 1, 1, 1, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
+        { name: 'Emily Brown', role: 'Doctor', department: 'Cardiology', shifts: [1, 0, 1, 1, 1, 1, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
+        { name: 'Michael Davis', role: 'Nurse', department: 'Cardiology', shifts: [1, 1, 1, 1, 1, 1, 1], availability: 'On-Shift', notified: false, leaveStatus: 'Pending' ,fromTo: '2024-12-30 to 2024-12-31'},
         { name: 'Sarah Johnson', role: 'Nurse', department: 'Cardiology', shifts: [0, 1, 1, 1, 1, 0, 0], availability: 'Off-Shift', notified: false, leaveStatus: 'Pending',fromTo: '2024-12-30 to 2024-12-31' },
       ];
       setStaffData(data);

@@ -234,7 +234,7 @@ const ContactUs = () => {
             color="primary"
             sx={{ fontWeight: "bold" }}
           >
-            info@vitalitylifecare.com
+            vitalitylifecarein@gmail.com
           </Typography>
         </Typography>
       </Box>
